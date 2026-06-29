@@ -342,8 +342,8 @@ with st.sidebar:
         st.caption(f"Model: {model_info.get('model_type', '-')}")
         st.caption(f"Jumlah kelas: {model_info.get('num_classes', '-')}")
         accuracy = model_info.get("accuracy")
-        st.caption(f"Akurasi target: {TARGET_AKURASI_TAMPILAN * 100:.0f}%")
-        st.caption("Catatan: nilai target, bukan hasil evaluasi aktual.")
+        # st.caption(f"Akurasi target: {TARGET_AKURASI_TAMPILAN * 100:.0f}%")
+        # st.caption("Catatan: nilai target, bukan hasil evaluasi aktual.")
 if class_names:
         with st.expander("Daftar kelas"):
             for i, name in enumerate(class_names, start=1):
