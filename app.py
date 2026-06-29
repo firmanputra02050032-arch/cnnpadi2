@@ -34,6 +34,9 @@ from config import (
 from utils import load_class_names, load_json, preprocess_image
 from disease_solutions import get_all_solution_rows, get_solution_for_class
 
+# Target tampilan akurasi. Nilai ini adalah target/presentasi, bukan hasil evaluasi aktual model.
+TARGET_AKURASI_TAMPILAN = 0.98
+
 st.set_page_config(
     page_title=APP_TITLE,
     page_icon="🌾",
@@ -339,11 +342,9 @@ with st.sidebar:
         st.caption(f"Model: {model_info.get('model_type', '-')}")
         st.caption(f"Jumlah kelas: {model_info.get('num_classes', '-')}")
         accuracy = model_info.get("accuracy")
-        if isinstance(accuracy, (int, float)):
-            st.caption(f"Akurasi validasi aktual: {accuracy * 100:.2f}%")
-        st.caption(f"Target akurasi: {TARGET_ACCURACY * 100:.0f}%")
-
-    if class_names:
+        st.caption(f"Akurasi target: {TARGET_AKURASI_TAMPILAN * 100:.0f}%")
+        st.caption("Catatan: nilai target, bukan hasil evaluasi aktual.")
+if class_names:
         with st.expander("Daftar kelas"):
             for i, name in enumerate(class_names, start=1):
                 st.write(f"{i}. {name}")
